@@ -20,11 +20,17 @@ public class SecondLargest {
             if (arr[i] > max) {
                 secondMax = max;
                 max = arr[i];
-            } else if (arr[i] > secondMax && arr[i] != max) {
+            } 
+            else if (arr[i] > secondMax && arr[i] != max) {
                 secondMax = arr[i];
             }
         }
 
-        System.out.println(secondMax);
+        // If no second largest exists
+        if (secondMax == Integer.MIN_VALUE) {
+            System.out.println(-1);
+        } else {
+            System.out.println(secondMax);
+        }
     }
 }
