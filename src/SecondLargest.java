@@ -1,5 +1,5 @@
     
-       import java.util.*;
+  import java.util.*;
 
 public class SecondLargest {
 
@@ -13,21 +13,26 @@ public class SecondLargest {
             arr[i] = sc.nextInt();
         }
 
-        int max = Integer.MIN_VALUE;
+        int max = arr[0];
         int secondMax = Integer.MIN_VALUE;
 
-        for (int i = 0; i < n; i++) {
+        // Find largest
+        for (int i = 1; i < n; i++) {
             if (arr[i] > max) {
-                secondMax = max;
                 max = arr[i];
-            } 
-            else if (arr[i] > secondMax && arr[i] != max) {
-                secondMax = arr[i];
             }
         }
 
-        // If no second largest exists
-        if (secondMax == Integer.MIN_VALUE) {
+        // Find second largest (distinct)
+        boolean found = false;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] != max && arr[i] > secondMax) {
+                secondMax = arr[i];
+                found = true;
+            }
+        }
+
+        if (!found) {
             System.out.println(-1);
         } else {
             System.out.println(secondMax);
