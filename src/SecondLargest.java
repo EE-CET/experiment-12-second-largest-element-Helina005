@@ -1,8 +1,7 @@
     
-  import java.util.*;
+import java.util.*;
 
 public class SecondLargest {
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -13,26 +12,19 @@ public class SecondLargest {
             arr[i] = sc.nextInt();
         }
 
-        int max = arr[0];
+        int max = Integer.MIN_VALUE;
         int secondMax = Integer.MIN_VALUE;
 
-        // Find largest
-        for (int i = 1; i < n; i++) {
-            if (arr[i] > max) {
-                max = arr[i];
-            }
-        }
-
-        // Find second largest (distinct)
-        boolean found = false;
         for (int i = 0; i < n; i++) {
-            if (arr[i] != max && arr[i] > secondMax) {
+            if (arr[i] > max) {
+                secondMax = max;
+                max = arr[i];
+            } else if (arr[i] < max && arr[i] > secondMax) {
                 secondMax = arr[i];
-                found = true;
             }
         }
 
-        if (!found) {
+        if (secondMax == Integer.MIN_VALUE) {
             System.out.println(-1);
         } else {
             System.out.println(secondMax);
